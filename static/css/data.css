@@ -1,0 +1,193 @@
+/*------------------------------------------------------------------------------
+    ROWS
+------------------------------------------------------------------------------*/
+
+
+.dashboard-cards {
+    width: 90%;
+    margin: auto;
+}
+
+
+
+.row-title {
+    width: 70%;
+    margin: auto;
+    text-align: left;
+
+}
+
+
+.row-title h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
+
+.row-title p {
+    color: #dadddf;
+    font-size: 12px;
+
+}
+
+.row-cards {
+    width: 70%;
+    text-align: center;
+    padding: 2% 0% 2% 0%;
+}
+
+
+
+
+
+
+
+
+/*------------------------------------------------------------------------------
+    DASHBOARD CARDS
+------------------------------------------------------------------------------*/
+
+
+
+.card-transparent {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: left;
+    width: 98%;
+    margin: auto;
+    color: white;
+
+}
+
+.card-transparent a {
+    font-size: 14px;
+    color: #FFCB9A;
+    font-weight: 600;
+
+}
+
+
+
+.card-table {
+    background: #373d49;
+    border-radius: 5px;
+    width: 98%;
+    margin: auto;
+    border: 1px solid #515663;
+    min-height: 350px;
+}
+
+
+
+.card-data {
+    background: #373d49;
+    border-radius: 5px;
+    width: 80%;
+    border: 1px solid #515663;
+    min-height: 220px;
+}
+
+.card-data .card-content {
+    font-size: 1rem;
+    text-align: left;
+    color: #FFCB9A;
+}
+
+.card-data .card-content b {
+    color: white;
+    font-weight: normal;
+}
+
+.card-data .card-title {
+    color: #FFCB9A;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: left;
+}
+
+.card-data .card-action {
+    padding: 0px;
+}
+
+
+/*------------------------------------------------------------------------------
+    PLOT
+------------------------------------------------------------------------------*/
+
+.plot {
+     width: 98%;
+     margin: auto;
+
+
+}
+
+
+
+/*------------------------------------------------------------------------------
+    BUTTONS
+------------------------------------------------------------------------------*/
+
+
+.btn-navigation {
+    width: 30%;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    border-color: transparent;
+    text-align: right;
+    color: white;
+    background-color: #6ba546;
+    font-size: 16px;
+    font-family: 'Jura', sans-serif;
+
+}
+
+.btn-navigation:hover, .btn-navigation:active, .btn-navigation:focus {
+    background-color: #558438;
+    color: white;
+}
+
+
+.button-inline {
+    width: 100%;
+    margin-left: 10%;
+    font-size: 0.6rem;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 15px;
+}
+
+.button-inline:hover, .button-inline:active, .button-inline:focus {
+    background-color: #558438;
+    color: white;
+}
+
+/*------------------------------------------------------------------------------
+    TABLES
+------------------------------------------------------------------------------*/
+
+tr{
+    border: none;
+    line-height: 1;
+}
+
+th{
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+td {
+    color: white;
+    text-align: center;
+    font-size: 0.7rem;
+    padding: 5px;
+}
+
+
+
+
+
+
+

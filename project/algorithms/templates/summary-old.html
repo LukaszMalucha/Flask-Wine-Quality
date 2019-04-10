@@ -1,0 +1,297 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row header">
+    <div id="messageAlert" class="alert alert-message" role="alert">
+    </div>
+    <div id="messageError" class="alert alert-message" role="alert">
+
+    </div>
+</div>
+
+<div class="dashboard-cards">
+    <div class="row row-title">
+        <h3>Wine Classification Problem</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> Dataset source & general overview</p>
+    </div>
+    <div class="row row-cards">
+        <div class="card card-transparent">
+        <p>Dataset includes red "Vinho Verde" wine samples from the north of Portugal. Observations
+            involve physico-chemical properties as well as sample rank given by the professional tasters
+            (the "quality"). How wine market values each wine
+            usually depends on those quality ratings. Gathered opinions of experienced sommeliers is
+            usually becoming final judgement of wine's quality. But is it possible, with a series of
+            laboratory tests, to predict which quality rating
+            will be given to a wine? Could wine tester judgment be somehow related to wine chemical
+            proportions? With given dataset we'll try to create artificial sommelier that based on
+            physico-chemical features can predict which quality
+            rating will be given.
+        </p>
+
+        </div>
+    </div>
+
+
+
+
+
+    {% endblock %}
+</div>
+
+    <h1>Dataset Description</h1>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <div class="row text-center">
+                    <div class="col-md-12 text-center" id="text_card">
+                        <h2>Overview</h2>
+                        <br>
+                        <p>Dataset includes red "Vinho Verde" wine samples from the north of Portugal. Observations
+                            invlove physicochemical properties as well as sample rank given by the professional tasters
+                            (the "quality"). How wine market values each wine
+                            usually depends on those quality ratings. Gathered opinions of experienced sommeliers is
+                            usually becoming final judgement of wine's quality. But is it possible, with a series of
+                            laboratory tests, to predict which quality rating
+                            will be given to a wine? Could wine tester judgment be somehow related to wine chemical
+                            proportions? With given dataset we'll try to create artificial sommelier that based on
+                            physicochemical features can predict which quality
+                            rating will be given.
+                        </p>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-12 text-center" id="text_card">
+                        <h2>Download Full Dataset</h2>
+                        <br>
+                        <a target="_blank" href="https://archive.ics.uci.edu/ml/datasets/wine+quality">Wine Quality Data
+                            Set</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card rotate-card" id="description_card">
+                <div class="row text-center">
+                    <div class="col-md-12 text-center" id="text_card">
+                        <h2>First 10 Rows of a Dataset</h2>
+                        <br>
+                        <p>First, let's see how the dataset is structured. Pandas dataset.head() will allow us to
+                            display first ten rows of a dataset.</p>
+                        <br> {{dataset_head | safe}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <h1>Dataset Stats</h1>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-4 text-left">
+            <div class="card" id="description_card">
+                <h2>Dataset Size:</h2>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <h4>No. of Rows: </h4>
+                    </div>
+                    <div class="col-md-4 text-left">
+                        <h4>{{rows}}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <h4>No. of Columns: </h4>
+                    </div>
+                    <div class="col-md-4 text-left">
+                        <h4>{{columns}}</h4>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card" id="description_card">
+                <h2>Records distribution by Quality:</h2>
+                <br> {{counter_sort | safe}}
+                <ol></ol>
+            </div>
+
+            <div class="card" id="description_card">
+                <canvas id="qualityChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-8 text-left">
+            <div class="card rotate-card" id="description_card">
+                <h2 style="margin-left:0px">Statistical Data:</h2>
+                <h1></h1>
+                {{describe | safe}}
+            </div>
+            <br>
+            <div class="col-md-4 text-left">
+                <div class="card text" id="description_card">
+                    <h2>Observation #1:</h2>
+                    <p>High disproportion between min & max values of each feature. We might be dealing with outliers.
+                    </p>
+                </div>
+                <br>
+                <div class="card text" id="description_card">
+                    <h2>Observation #2:</h2>
+                    <p>Imbalanced record distribution of quality class. Quality "3" & "8" have both representation below
+                        20 records.
+                    </p>
+                </div>
+                <br>
+                <div class="card text" id="description_card">
+                    <h2>Observation #3:</h2>
+                    <p>Strongest correlation between quality and alcohol, volatile acidity, citric acid, sulphates
+                        features.
+                    </p>
+                </div>
+                <br>
+                <div class="card text" id="description_card">
+                    <h2>Observation #4:</h2>
+                    <p>Problem can be seen as an either classification or regression, if we take on account that quality
+                        grows continously.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-8 text-left">
+                <div class="card text" id="description_card">
+                    <h2>Feature Corellations:</h2>
+                    <img src="/static/img/corr.png" class="img-responsive" id="plot"/>
+
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <div class="row text-center">
+                    <div class="col-md-12 text-center" id="text_card">
+                        <h2>Features Distribution</h2>
+                        <p>As seen on a graphs below for most correlated features we can see strongest upward trend on
+                            alcohol graph and clear inverse correlation on volatile acidity graph. Outliers distribution
+                            acceptable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-left">
+            <img src="/static/img/alcohol.png" class="img-responsive" id="plot"/>
+        </div>
+        <div class="col-md-3 text-left">
+            <img src="/static/img/c_acid.png" class="img-responsive" id="plot"/>
+        </div>
+        <div class="col-md-3 text-left">
+            <img src="/static/img/v_acid.png" class="img-responsive" id="plot"/>
+        </div>
+        <div class="col-md-3 text-left">
+            <img src="/static/img/sulphates.png" class="img-responsive" id="plot"/>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <h2>Machine Learning Question</h2>
+                <p>"Based on given physiometric features, can we predict wine's quality rating?"</p>
+                <br>
+                <br>
+                <h2>Download Code for this Section</h2>
+                <br>
+                <form action="{{url_for('algorithms.download_code', code_name='dataset_describe') }}" method="GET"
+                      enctype="multipart/form-data">
+                    <button type="Download" class="btn btn-default" id="button-download">Download</button>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="row text-center">
+
+            <a href="{{ url_for('algorithms.classifier_build') }}" class="waves-effect waves-light btn-large"
+               id="navigation">Let's build classifier</a>
+
+        </div>
+    </div>
+
+
+    <div class="row"></div>
+    <div class="row"></div>
+
+
+    <script>
+var scx = document.getElementById('qualityChart').getContext('2d');
+var qualitychart = new Chart(scx, {
+    // The type of chart we want to create
+    type: 'bar',
+    // The data for our dataset
+    data: {
+        labels: [{% for key, value in counter_dict.items()  %}
+                    "{{key}}",
+                {% endfor %}],
+        datasets: [{
+            data: [{% for key, value in counter_dict.items()  %}
+                    "{{value}}",
+                   {% endfor %}],
+            backgroundColor: [
+            '#857aaa',    // color for data at index 0
+            '#b55d60',   // color for data at index 1
+            '#5f9e6e',  // color for data at index 2
+            '#71aec0', // color for data at index 3
+            '#5f9e6e', // color for data at index 3
+            '#5975a4', // color for data at index 3
+            //...
+        ],
+        }]
+    },
+    // Configuration options go here
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: { display: false },
+        title: {
+        fontSize: 16,
+        fontColor: 'black',
+        display: true,
+        text: 'Quality Distribution Chart'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+             xAxes: [{
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                }
+            }],
+        yAxes: [{
+            display: true,
+            gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                },
+            display: true,
+            ticks: {
+                suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                // OR //
+                beginAtZero: true   // minimum value will be 0.
+            }
+        }]
+    }
+    }
+});
+
+    </script>
+
+

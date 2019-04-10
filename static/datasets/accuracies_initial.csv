@@ -1,0 +1,9 @@
+Algorithm,Accuracy Mean,Accuracy Std.
+Logistic Regression,59%,2%
+K-nearest Neighbors,58%,4%
+SVM (Linear),62%,4%
+SVM (RGB),62%,4%
+AdaBoost,45%,15%
+Naive Bayes (Gauss),44%,4%
+Random Forest,66%,3%
+Gradient Tree Boost,66%,3%

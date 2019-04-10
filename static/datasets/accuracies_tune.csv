@@ -1,0 +1,6 @@
+Algorithm,Accuracy Mean,Accuracy Std.
+SVM (Linear),60%,3%
+SVM (RGB),64%,3%
+Random Forest,68%,4%
+Gradient Tree Boost,67%,2%
+Vote Classifier,68%,4%

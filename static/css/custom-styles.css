@@ -1,0 +1,183 @@
+/*------------------------------------------------------------------------------
+    MAIN  STYLES    
+------------------------------------------------------------------------------*/
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: #3e4452;
+}
+
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+#wrapper {
+    width: 100%;
+}
+
+#page-index {
+    width: 100%;
+    display: block;
+    overflow: auto;
+    position: relative;
+    top: 55px;
+
+}
+
+#page-index a {
+    text-decoration: none;
+    outline: 0;
+    /*font-size: 10px;*/
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn {
+    color: white;
+    background-color: #6ba546;
+    border: none;
+    width: 30%;
+    margin: 0;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.btn-enter {
+    background-color: #2d4b65;
+    width: 100%;
+    text-align: right;
+    font-size: 14px;
+}
+
+.btn-enter i {
+    font-size: 16px;
+}
+
+.btn-enter:hover,
+.btn-enter:focus,
+.btn-enter:active {
+    background-color: #1f3039;
+    color: white;
+}
+
+.header {
+    min-height: 72px;
+    margin: 10px;
+}
+
+a {
+    color: #4267b2
+}
+
+.plain-element {
+    margin: 0px;
+    padding: 0px;
+}
+
+.box {
+   display: flex;
+   align-items:center;
+   margin-bottom: 10px;
+}
+
+
+
+/*------------------------------------------------------------------------------
+    PROGRESS BAR
+------------------------------------------------------------------------------*/
+
+
+
+progress {
+	position: fixed;
+	left: 0;
+	bottom: 50px;
+	width: 100%;
+	height: 4px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+	background-color: transparent;
+	color: #a8a8a8;
+	z-index: 10;
+}
+
+progress::-webkit-progress-bar {
+	background-color: #a8a8a8;
+	z-index: 10;
+}
+
+progress::-webkit-progress-value {
+	background-color: #a8a8a8;
+	z-index: 10;
+}
+
+progress::-moz-progress-bar {
+	background-color: #a8a8a8;
+	z-index: 10;
+}
+
+
+.progress-container {
+	width: 100%;
+	background-color: transparent;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 5px;
+	display: block;
+	z-index: 10;
+}
+
+.progress-bar {
+	background-color: transparent;
+	width: 0%;
+	display: block;
+	height: inherit;
+	z-index: 10;
+}
+
+
+
+
+/*------------------------------------------------------------------------------
+    FOOTER
+------------------------------------------------------------------------------*/
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #3e4452;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 15px;
+    color: #fff;
+    padding: 15px 0px;
+    text-align: center;
+}
+
+
+/*----------------------------------------------
+    MEDIA QUERIES
+------------------------------------------------*/
+
+
+@media(max-width:1700px) {
+}
+
+
+@media(max-width:992px) {}
+
+
+@media(max-width:520px) {}
+

@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row header">
+    <div id="messageAlert" class="alert alert-message" role="alert">
+    </div>
+    <div id="messageError" class="alert alert-message" role="alert">
+
+    </div>
+</div>
+
+<div class="dashboard-cards">
+    <div class="row row-title">
+        <h3>Red Wine Classification Problem</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> Dataset source & problem description</p>
+    </div>
+    <div class="row row-cards">
+        <div class="card card-transparent">
+            <p>Dataset includes red "Vinho Verde" wine samples from the north of Portugal. Observations
+                involve physico-chemical properties as well as sample rank given by the professional tasters
+                (the "quality"). How wine market values each wine
+                usually depends on those quality ratings. Gathered opinions of experienced sommeliers is
+                usually becoming final judgement of wine's quality. But is it possible, with a series of
+                laboratory tests, to predict which quality rating
+                will be given to a wine? Could wine tester judgment be somehow related to wine chemical
+                proportions? With given dataset we'll try to create artificial sommelier that based on
+                physico-chemical features can predict which quality
+                rating will be given.
+            </p>
+            <p>No. of Rows: <b>{{rows}}</b></p>
+            <p>No. of Columns: <b>{{columns}}</b></p>
+            <a target="_blank" href="https://archive.ics.uci.edu/ml/datasets/wine+quality">UC Irvine Machine Learning
+                Repository - Wine Quality Data Set</a>
+        </div>
+    </div>
+    <div class="row row-title">
+        <div class="box">
+        <h3>Dataset Overview</h3>
+        <form action="{{url_for('algorithms.download_code', code_name='dataset_describe') }}" method="GET"
+              enctype="multipart/form-data">
+            <button type="Download" class="btn button-inline">Download Code</button>
+        </form>
+
+        </div>
+        <p>&nbsp;<i class="fab fa-python"> </i> Vizualizing first 10 rows of a dataset with Pandas <b>dataset.head()</b>
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-12 plain-element">
+            <div class="card card-table">
+                {{dataset_head | safe}}
+            </div>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>Dataset Statistics </h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> Generating descriptive statistics to summarize central tendency,
+            dispersion and shape of a dataset’s distribution with pandas <b>dataset.describe()</b>
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-12 plain-element">
+            <div class="card card-table">
+                {{describe | safe}}
+            </div>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>Feature Distribution & Correlations </h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> Vizualizing feature distribution and correlation in a dataset
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-6 plain-element">
+            <div class="card card-table">
+                <canvas id="qualityChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-1 plain-element"></div>
+        <div class="col-md-5 plain-element">
+            <img src="/static/img/correlations.png" class="img-responsive plot"/>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>Dataset Insights </h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> Dataset valuable observations
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-3 plain-element">
+            <div class="card card-data">
+                <div class="card-content">
+                    <span class="card-title">Observation #1</span>
+                    <br>
+                    <p><b>High disproportion between min & max values of each feature. We might be dealing with
+                        outliers. </b></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 plain-element">
+            <div class="card card-data">
+                <div class="card-content">
+                    <span class="card-title">Observation #2</span>
+                    <br>
+                    <p><b>Imbalanced record distribution of quality class. Quality "3" & "8" have both representation
+                        below 20 records. </b></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 plain-element">
+            <div class="card card-data">
+                <div class="card-content">
+                    <span class="card-title">Observation #3</span>
+                    <br>
+                    <p><b>Strongest correlation between quality and alcohol, volatile acidity, citric acid, sulphates
+                        features. </b></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 plain-element">
+            <div class="card card-data">
+                <div class="card-content">
+                    <span class="card-title">Observation #4</span>
+                    <br>
+                    <p><b>Problem can be seen as an either classification or regression, take on account that quality
+                        grows continuously. </b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>Dataset Trends </h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> As seen on a graphs below for most correlated features we can see
+            strongest upward trend on alcohol graph and clear inverse correlation on volatile acidity graph.
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-3 plain-element">
+            <img src="/static/img/alcohol.png" class="img-responsive plot"/>
+        </div>
+        <div class="col-md-3 plain-element">
+            <img src="/static/img/c_acid.png" class="img-responsive plot"/>
+        </div>
+        <div class="col-md-3 plain-element">
+            <img src="/static/img/sulphates.png" class="img-responsive plot"/>
+        </div>
+        <div class="col-md-3 plain-element">
+            <img src="/static/img/v_acid.png" class="img-responsive plot"/>
+        </div>
+    </div>
+    <div class="row row-cards">
+          <a href="{{ url_for('algorithms.classifier_build') }}" class="btn btn-navigation"
+               id="navigation"><span>Build Algorithm <i class="far fa-arrow-alt-circle-right"></i></span></a>
+    </div>
+    <div class="row row-cards">
+
+    </div>
+</div>
+
+
+
+
+
+<script>
+var scx = document.getElementById('qualityChart').getContext('2d');
+var qualitychart = new Chart(scx, {
+    // The type of chart we want to create
+    type: 'bar',
+    // The data for our dataset
+    data: {
+        labels: [{% for key, value in counter_dict.items()  %}
+                    "{{key}}",
+                {% endfor %}],
+        datasets: [{
+            data: [{% for key, value in counter_dict.items()  %}
+                    "{{value}}",
+                   {% endfor %}],
+            backgroundColor: [
+            'white',    // color for data at index 0
+            '#D3D3D3',   // color for data at index 1
+            '#a8a8a8',  // color for data at index 2
+            '#939393', // color for data at index 3
+            '#939393', // color for data at index 3
+            '#939393', // color for data at index 3
+            //...
+        ],
+        }]
+    },
+    // Configuration options go here
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: { display: false },
+        title: {
+        fontSize: 16,
+        fontColor: '#FFCB9A',
+        display: true,
+        text: 'Quality Distribution Chart'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+             xAxes: [{
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                },
+                ticks: {
+                    fontColor: "white",
+                },
+            }],
+            yAxes: [{
+                display: true,
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                },
+                display: true,
+                ticks: {
+                    fontColor: "white",
+                    suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                    // OR //
+                    beginAtZero: true   // minimum value will be 0.
+            }
+        }]
+    }
+    }
+});
+
+
+
+
+
+
+</script>
+{% endblock %}
+

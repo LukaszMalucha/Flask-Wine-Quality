@@ -1,0 +1,104 @@
+{% extends 'base.html' %} {% block content %}
+<div class="card text-center" id="main_card">
+
+    <br>
+    <h1>Hyperparameters Tuning</h1>
+    <br>
+    <div class="row">
+        <div class="col-md-12 text-center" id="desc_col">
+            <div class="card" id="description_card">
+                <div class="row text-center">
+                    <div class="col-md-12 text-center" id="text_card">
+                        <h2>GridSearch</h2>
+                        <br>
+                        <br>
+                        <p>In order to choose optimal parameters for each algorithm, we'll use GridSearchCV from sklearn library. It'll allow us to perform cross-validation of every possible specified hyperparameters setup:</p>
+                        <br>
+                        <div class="col-md-2 text-left"></div>
+                        <div class="col-md-8 text-left">
+                            <li style="color:black">Optimal parameters for Linear SVM are: {'C': 1, 'kernel' : 'linear'}</li>
+                            <li style="color:black">Optimal parameters for Kernel SVM are {'C': 10, 'gamma': 1.0, 'kernel': 'rbf'}</li>
+                            <li style="color:black">Optimal parameters for RandomForest are {'criterion': 'entropy', 'min_samples_leaf': 3, max_depth': 110, 'max_features': 3, 'min_samples_split': 5, 'n_estimators': 200}</li>
+                            <li style="color:black">Optimal parameters for Gradient Tree Boosting are {'learning_rate': 0.1, max_features = 0.1, 'n_estimators': 450}</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row"></div>
+            <div class="card" id="description_card">
+                <div class="row text-center">
+                    <div class="col-md-12 text-center" id="text_card">
+                        <h2>Algorithms Performance after Tuning</h2>
+                        <br>
+                        <br>
+                        <p>Again, we'll measure model performance using k-Fold Cross Validation technique. Additionally we'll try out Vote Classifier built with all four other classifiers: </p>
+                        <div class="col-md-3 text-left"></div>
+                        <div class="col-md-6 text-center">
+
+                            <br> {{ accuracies_tune | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+
+    <br>
+    <h1>Predicting Test Set Values</h1>
+    <br>
+    <div class="row">
+        <div class="card" id="description_card">
+            <div class="row text-center">
+                <div class="col-md-12 text-center" id="text_card">
+                    <h2>Predicting y_test</h2>
+                    <br>
+                    <p> Let's see how our models are performing on a test set:</p>
+                    <div class="col-md-4 text-left"></div>
+                    <div class="col-md-6 text-center">
+
+                        <br> {{ accuracies_test | safe }}
+                    </div>
+                    <br>
+                    <div class="col-md-12 text-center">
+                        <br>
+                        <br>
+                        <h2>Download Code for this Section</h2>
+                        <br>
+                        <form action="{{url_for('algorithms.download_code', code_name='classifier_test') }}" method="GET" enctype="multipart/form-data">
+                            <button type="Download" class="btn btn-default" id="button-download">Download</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card" id="description_card">
+            <div class="row text-center">
+                <div class="col-md-12 text-center" id="text_card">
+                    <h2>Conclusion</h2>
+                    <br>
+                    <p>With given data samples avg 70% accuracy is the highest as we can reach. There is a high probability that with more data we could predict quality with better precision. Generally, ensemble models (RF, GTB) outperform other algorithms
+                        in this task.<br> Now, let us meet our Artificial Sommeliers in person by clicking button below:</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="row text-center">
+
+                <a href="{{ url_for('algorithms.sommeliers') }}"  class="waves-effect waves-light btn-large" id="navigation">A.I. Sommeliers</a>
+
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+
+
+</div>
+
+{% endblock %}
