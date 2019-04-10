@@ -8,253 +8,155 @@
 
 <div class="dashboard-cards">
     <div class="row row-title">
-        <h3>A.I. Sommeliers</h3>
-            <p>&nbsp;<i class="fab fa-python"> </i> Please specify Red Wine features</p>
+        <h3>Please specify Red Wine features:</h3>
+        <p>&nbsp;*If you have no idea what is the feature value, leave it blank. Dataset <b>average</b> will be applied
+        </p>
     </div>
-    <div class="row row-cards">
+    <div class="row row-cards" style="padding-top:0px">
+        <form id="formRateWine" method="POST">
+            <div class="col-md-5 plain-element">
+                <div class="card card-data card-form">
+                    <br>
+                    <div class="row plain-element">
+                        <div class="col-md-6">
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">blur_circular</i>
+                                    <input placeholder="Fixed Acidity" id="fixed_acidity" name="fixed_acidity"
+                                           type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">blur_on</i>
+                                    <input placeholder="Volatile Acidity" id="volatile_acidity" name="volatile_acidity"
+                                           type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">share</i>
+                                    <input placeholder="Citric Acid" id="citric_acid" name="citric_acid" type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">widgets</i>
+                                    <input placeholder="Residual Sugar" id="residual_sugar" name="residual_sugar"
+                                           type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">device_hub</i>
+                                    <input placeholder="Chlorides" id="chlorides" name="chlorides" type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">waves</i>
+                                    <input placeholder="Free Sulfur Dioxide" id="free_sulfur_dioxide"
+                                           name="free_sulfur_dioxide" type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">bubble_chart</i>
+                                    <input placeholder="Total Sulfur Dioxide" id="total_sulfur_dioxide"
+                                           name="total_sulfur_dioxide" type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">gradient</i>
+                                    <input placeholder="Density" id="density" name="density" type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">opacity</i>
+                                    <input placeholder="pH" id="pH" name="pH" type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">cloud_circle</i>
+                                    <input placeholder="Sulphates" id="sulphates" name="sulphates" type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">local_bar</i>
+                                    <input placeholder="Alcohol" id="alcohol" name="alcohol" type="number"
+                                           step=0.001 min=0 class="validate">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-submit" type="submit" id="navigation"><span>Rate Wine <i
+                            class="far fa-arrow-alt-circle-right"></i></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-2 plain-element"></div>
+        <div class="col-md-5 plain-element">
 
-
+            <div class="card horizontal card-sommelier">
+                <div class="card-image">
+                    <img src="/static/img/sommelier1.jpg">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <span class="card-title" id="rf-name">Sir Forest Random</span>
+                        <p id="rf-comment">{{random_forest_message}}</p>
+                        <p id="rf-result"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card horizontal card-sommelier">
+                <div class="card-image">
+                    <img src="/static/img/sommelier2.jpg">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <span class="card-title" id="vot-name">Classy V. Ensemble</span>
+                        <p id="vot-comment">{{vote_message}}</p>
+                        <p id="vot-result">{{ vot_predict }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card horizontal card-sommelier">
+                <div class="card-image">
+                    <img src="/static/img/sommelier3.jpg">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <span class="card-title" id="gtb-name">Gradienne T. Boost</span>
+                        <p id="gtb-comment">{{gradient_message}}</p>
+                        <p id="gtb-result">{{ gtb_predict}}</p>
+                    </div>
+                </div>
+            </div>
+            <p>*(3-4 is poor quality, 5-6 average, 7-8 is the highest)</p>
+        </div>
     </div>
+    <div class="row row-cards"></div>
+
 </div>
-
 {% endblock %}
 
-<div class="col-md-12 text-center">
-    <div class="card text-center" id="main_card">
-        <h1>A.I. Sommeliers</h1>
-        <div class="row">
-            <div class=" col-md-1 text-left"></div>
-            <div class="col-md-10">
-                <div class="card text-center" id="description_card">
-                    <h2>Please specify Red Wine features</h2>
-                    <br>
-                    <p>*If you have no idea what is the feature value, leave it blank. Dataset average will be
-                        applied</p>
-                    <br>
-                    <div class="row">
-                        <form action="{{ url_for('algorithms.sommeliers') }}" method="POST" class="col s12"
-                              id="form-rate">
-                            <div class=" col-md-3 text-left">
-                                <div class="card" id="question">
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">blur_circular</i>
-                                            <input id="name" name="fixed_acidity" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">fixed acidity</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">blur_on</i>
-                                            <input id="name" name="volatile_acidity" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">volatile acidity</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">share</i>
-                                            <input id="name" name="citric_acid" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">citric acid</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" col-md-3 text-left">
-                                <div class="card" id="question">
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">widgets</i>
-                                            <input id="name" name="residual_sugar" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">residual sugar</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">device_hub</i>
-                                            <input id="name" name="chlorides" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">chlorides</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">waves</i>
-                                            <input id="name" name="free_sulfur_dioxide" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">free sulfur dioxide</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" col-md-3 text-left">
-                                <div class="card" id="question">
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">bubble_chart</i>
-                                            <input id="name" name="total_sulfur_dioxide" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">total sulfur dioxide</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">gradient</i>
-                                            <input id="name" name="density" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">density</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">opacity</i>
-                                            <input id="name" name="pH" type="number" step=0.001 min=0 class="validate">
-                                            <label for="icon_prefix">pH</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" col-md-3 text-left">
-                                <div class="card" id="question">
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">cloud_circle</i>
-                                            <input id="name" name="sulphates" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">sulphates</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12" id="field">
-                                            <i class="material-icons prefix">local_bar</i>
-                                            <input id="name" name="alcohol" type="number" step=0.001 min=0
-                                                   class="validate">
-                                            <label for="icon_prefix">alcohol</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row"></div>
-                            <div class="row">
-                                <div class="row text-center">
-                                    <br>
-                                    <button class="btn waves-effect waves-light" type="submit" id="navigation">Rate It
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class=" col-md-1 text-left"></div>
-        </div>
-        <div class="row">
-            <div class=" col-md-1 text-left"></div>
-            <div class="col-md-10 text-center">
-                <div class="card text-center" id="description_card">
-                    <h2>What our A.I. Specialists would say about your red wine?</h2>
-                    <br>
-                    <p>*(3-4 is poor quality, 5-6 average, 7-8 is the highest)</p>
-                    <br>
-                    <div class="row"></div>
-                    <br>
-                    <div class="row text-center">
-                        <div class="col-md-4 text-center">
-                            <div class="col-md-12 text-center" id="text_card">
-                                <div class="row">
-                                    <div class=" col-md-2 text-left"></div>
-                                    <div class="col-md-8 text-center">
-                                        <img src="/static/img/sommelier1.jpg" class="img-responsive"
-                                             style="padding-left:15px"/>
-                                        <h2 id="signature">Sir Forest Random</h2>
-                                    </div>
-                                    <div class=" col-md-2 text-left"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8 text-center">
-                                        <h6 id="rf">{{random_forest_message}}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <div class="col-md-12 text-center" id="text_card">
-                                <div class="row">
-                                    <div class=" col-md-2 text-left"></div>
-                                    <div class="col-md-8 text-center">
-                                        <img src="/static/img/sommelier2.jpg" class="img-responsive"
-                                             style="padding-left:15px"/>
-                                        <h2 id="signature">Classy V. Ensemble</h2>
-                                    </div>
-                                    <div class=" col-md-2 text-left"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8 text-center">
-                                        <h6 id="vot">{{vote_message}}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <div class="col-md-12 text-center" id="text_card">
-                                <div class="row">
-                                    <div class=" col-md-2 text-left"></div>
-                                    <div class="col-md-8 text-center">
-                                        <img src="/static/img/sommelier3.jpg" class="img-responsive"
-                                             style="padding-left:15px"/>
-                                        <h2 id="signature">Gradienne T. Boost</h2>
-                                    </div>
-                                    <div class=" col-md-2 text-left"></div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8 text-center">
-                                        <h6 id="gtb">{{gradient_message}}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-md-4 text-center">
-                            <div class="col-md-12 text-center" id="text_card">
-                                <h1 style="font-family:Playball; font-color:#8B0000" id="score">{{ rf_predict }}</h1>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <div class="col-md-12 text-center" id="text_card">
-                                <h1 style="font-family:Just Another Hand; font-color:#8B0000" id="score">{{ vot_predict
-                                    }}</h1>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <div class="col-md-12 text-center" id="text_card">
-                                <h1 style="font-family:Merienda One; font-color:#8B0000" id="score">{{ gtb_predict
-                                    }}</h1>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class=" col-md-1 text-left"></div>
-        </div>
-        <br>
-        <div class="row text-center">
-            <a href="{{ url_for('algorithms.summary') }}" class="waves-effect waves-light btn-large" id="navigation">Back
-                to Main Page</a>
-        </div>
-
-    </div>
-</div>
 

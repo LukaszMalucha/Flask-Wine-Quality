@@ -118,6 +118,87 @@
     padding: 0px;
 }
 
+.card-form {
+    min-height: 260px;
+    width: 100%;
+}
+
+.card-sommelier {
+    background: #777c85;
+    border-radius: 5px;
+}
+
+.card.horizontal .card-image img{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.card-sommelier .card-title {
+    color: #FFCB9A;
+
+}
+
+.card-sommelier .card-content {
+    padding: 16px;
+
+}
+
+.card-sommelier .card-content p{
+    color: white;
+    font-size: 0.8rem;
+
+}
+
+
+#rf-name {
+    font-family: 'Playball', cursive;
+    font-size: 1.4rem;
+}
+
+#rf-comment {
+    font-family: 'Playball', cursive;
+    font-size: 1rem;
+}
+
+#rf-result {
+    margin-top: 2%;
+    font-family: 'Playball', cursive;
+    font-size: 1.8rem;
+}
+
+#vot-name {
+   font-family: 'Just Another Hand', cursive;
+   font-size: 1.6rem;
+}
+
+#vot-comment {
+   font-family: 'Just Another Hand', cursive;
+   font-size: 1.4rem;
+}
+
+#vot-result {
+    margin-top: 2%;
+   font-family: 'Just Another Hand', cursive;
+   font-size: 2rem;
+}
+
+#gtb-name {
+    font-family: 'Merienda One', cursive;
+    font-size: 1.2rem;
+}
+
+#gtb-comment {
+    font-family: 'Merienda One', cursive;
+    font-size: 0.9rem;
+}
+
+#gtb-result {
+    margin-top: 2%;
+    font-family: 'Merienda One', cursive;
+    font-size: 1.6rem;
+}
+
+
 
 /*------------------------------------------------------------------------------
     PLOT
@@ -169,6 +250,25 @@
     color: white;
 }
 
+
+.btn-submit {
+    width: 100%;
+    height: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-color: transparent;
+    text-align: right;
+    color: white;
+    background-color: #262a33;
+    font-size: 18px;
+
+}
+
+.btn-submit:hover, .btn-submit:active, .btn-submit:focus {
+    background-color: #15181c;
+    color: white;
+}
+
 /*------------------------------------------------------------------------------
     TABLES
 ------------------------------------------------------------------------------*/
@@ -192,8 +292,22 @@ td {
 }
 
 
+/*------------------------------------------------------------------------------
+    FORMS
+------------------------------------------------------------------------------*/
 
+.input-field .prefix,
+.input-field .prefix.active{
+     color: #FFCB9A;
+}
 
+.input-field {
+    color: white;
+}
+input.valid[type="number"]:not(.browser-default),
+input[type="number"]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #FFCB9A;
+    box-shadow: 0 1px 0 0 #FFCB9A;
 
-
+}
 

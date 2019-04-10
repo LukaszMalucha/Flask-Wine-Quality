@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, Blueprint, send_file
+from flask import render_template, request, redirect, url_for, Blueprint, send_file, jsonify
 
 ## BLUEPRINT INIT
 from project.algorithms.models import CodeModel
@@ -57,87 +57,100 @@ def classifier_fit():
 
 @algorithms_blueprint.route('/sommeliers', methods=['GET', 'POST'])
 def sommeliers():
-    ## Gather User Input with conditioning for blank field
-    if request.method == 'POST':
-
-        if request.form['fixed_acidity'] == "":
-            fixed_acidity = 8.32
-        else:
-            fixed_acidity = float(request.form['fixed_acidity'])
-
-        if request.form['volatile_acidity'] == "":
-            volatile_acidity = 0.53
-        else:
-            volatile_acidity = float(request.form['volatile_acidity'])
-
-        if request.form['citric_acid'] == "":
-            citric_acid = 0.27
-        else:
-            citric_acid = float(request.form['citric_acid'])
-
-        if request.form['residual_sugar'] == "":
-            residual_sugar = 2.54
-        else:
-            residual_sugar = float(request.form['residual_sugar'])
-
-        if request.form['chlorides'] == "":
-            chlorides = 0.09
-        else:
-            chlorides = float(request.form['chlorides'])
-
-        if request.form['free_sulfur_dioxide'] == "":
-            free_sulfur_dioxide = 15.87
-        else:
-            free_sulfur_dioxide = float(request.form['free_sulfur_dioxide'])
-
-        if request.form['total_sulfur_dioxide'] == "":
-            total_sulfur_dioxide = 46.47
-        else:
-            total_sulfur_dioxide = float(request.form['total_sulfur_dioxide'])
-
-        if request.form['density'] == "":
-            density = 1.00
-        else:
-            density = float(request.form['density'])
-
-        if request.form['pH'] == "":
-            pH = 3.31
-        else:
-            pH = float(request.form['pH'])
-
-        if request.form['sulphates'] == "":
-            sulphates = 0.66
-        else:
-            sulphates = float(request.form['sulphates'])
-
-        if request.form['alcohol'] == "":
-            alcohol = 10.42
-        else:
-            alcohol = float(request.form['alcohol'])
-
-        red_wine = [[fixed_acidity, volatile_acidity, citric_acid, residual_sugar,
-                     chlorides, free_sulfur_dioxide, total_sulfur_dioxide,
-                     density, pH, sulphates, alcohol]]
-
-        ## Predict values
-
-        rf_predict = model_rf.predict(red_wine)
-        gtb_predict = model_gtb.predict(red_wine)
-        vot_predict = model_vot.predict(red_wine)
-
-        ## Choose sommelier comment
-
-        random_forest_message = rf_message(rf_predict)
-        gradient_message = gtb_message(gtb_predict)
-        vote_message = vot_message(vot_predict)
-
-        return render_template('sommeliers.html', rf_predict=rf_predict[0],
-                               gtb_predict=gtb_predict[0], vot_predict=vot_predict[0],
-                               random_forest_message=random_forest_message,
-                               gradient_message=gradient_message,
-                               vote_message=vote_message)
-
     return render_template('sommeliers.html')
+
+
+@algorithms_blueprint.route('/rate', methods=['POST'])
+def rate():
+    """Gather User Input with conditioning for blank field"""
+    if request.form['fixed_acidity'] == "":
+        fixed_acidity = 8.32
+    else:
+        fixed_acidity = float(request.form['fixed_acidity'])
+
+    if request.form['volatile_acidity'] == "":
+        volatile_acidity = 0.53
+    else:
+        volatile_acidity = float(request.form['volatile_acidity'])
+
+    if request.form['citric_acid'] == "":
+        citric_acid = 0.27
+    else:
+        citric_acid = float(request.form['citric_acid'])
+
+    if request.form['residual_sugar'] == "":
+        residual_sugar = 2.54
+    else:
+        residual_sugar = float(request.form['residual_sugar'])
+
+    if request.form['chlorides'] == "":
+        chlorides = 0.09
+    else:
+        chlorides = float(request.form['chlorides'])
+
+    if request.form['free_sulfur_dioxide'] == "":
+        free_sulfur_dioxide = 15.87
+    else:
+        free_sulfur_dioxide = float(request.form['free_sulfur_dioxide'])
+
+    if request.form['total_sulfur_dioxide'] == "":
+        total_sulfur_dioxide = 46.47
+    else:
+        total_sulfur_dioxide = float(request.form['total_sulfur_dioxide'])
+
+    if request.form['density'] == "":
+        density = 1.00
+    else:
+        density = float(request.form['density'])
+
+    if request.form['pH'] == "":
+        pH = 3.31
+    else:
+        pH = float(request.form['pH'])
+
+    if request.form['sulphates'] == "":
+        sulphates = 0.66
+    else:
+        sulphates = float(request.form['sulphates'])
+
+    if request.form['alcohol'] == "":
+        alcohol = 10.42
+    else:
+        alcohol = float(request.form['alcohol'])
+
+    red_wine = [[fixed_acidity, volatile_acidity, citric_acid, residual_sugar,
+                 chlorides, free_sulfur_dioxide, total_sulfur_dioxide,
+                 density, pH, sulphates, alcohol]]
+
+    ## Predict values
+
+    rf_predict = model_rf.predict(red_wine)
+    gtb_predict = model_gtb.predict(red_wine)
+    vot_predict = model_vot.predict(red_wine)
+
+    ## Choose sommelier comment
+
+    random_forest_message = rf_message(rf_predict)
+    gradient_message = gtb_message(gtb_predict)
+    vote_message = vot_message(vot_predict)
+
+
+    return jsonify({'rf_predict': str(rf_predict[0]),
+                    'gtb_predict': str(gtb_predict[0]),
+                    'vot_predict': str(vot_predict[0]),
+                    'random_forest_message': random_forest_message,
+                    'gradient_message': gradient_message,
+                    'vote_message': vote_message
+                    })
+
+
+        # return render_template( rf_predict=rf_predict[0],
+        #                        gtb_predict=gtb_predict[0], vot_predict=vot_predict[0],
+        #                        random_forest_message=random_forest_message,
+        #                        gradient_message=gradient_message,
+        #                        vote_message=vote_message)
+
+
 
 
 @algorithms_blueprint.route('/download_code/<code_name>', methods=['GET'])
