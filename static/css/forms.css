@@ -1,5 +1,5 @@
 body {
-    background-image: url('../../static/img/background.png');
+    background-image: url('../../static/img/background.jpg');
     background-size: cover;
 }
 
@@ -9,10 +9,10 @@ body {
     max-width: 40%;
     padding: 15px 0px 0px 0px;
     margin: 0 auto;
-    background-color: white;
+    background-color: #2c313a;
     border-color: transparent;
     border-radius: 15px;
-    color: #222222;
+    color: #FFCB9A;
     font-weight: bolder;
     margin-bottom: 50px;
 }
@@ -25,12 +25,12 @@ body {
     border-color: transparent;
     text-align: right;
     color: white;
-    background-color: #165d81;
+    background-color: #262a33;
     font-size: 18px;
 }
 
 .btn-login:hover, .btn-login:active, .btn-login:focus {
-    background-color: #0f415a;
+    background-color: #15181c;
 }
 
 
@@ -41,9 +41,9 @@ body {
     margin: auto;
     font-size: 5rem;
     border-radius: 50px;
-    background-color: white;
+    background-color: #2c313a;
     padding: 3%;
-    color: #165d81;
+    color: white;
 }
 
 .form-box {
@@ -66,8 +66,7 @@ body {
 h6 {
     font-size: 0.8rem;
     font-weight: bold;
-    color: #222;
-    color: grey;
+    color: white;
 }
 
 input[type="email"]:not(.browser-default):focus:not([readonly]),
@@ -113,7 +112,9 @@ label {
 }
 
 
-
+.form-control {
+    color: white;
+}
 
 
 .control-label {

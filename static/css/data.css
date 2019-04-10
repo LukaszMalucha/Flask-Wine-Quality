@@ -74,6 +74,7 @@
     border-radius: 5px;
     width: 98%;
     margin: auto;
+    margin-bottom: 20px;
     border: 1px solid #515663;
 }
 
@@ -83,6 +84,7 @@
     border-radius: 5px;
     width: 98%;
     margin: auto;
+    margin-bottom: 20px;
     border: 1px solid #515663;
     min-height: 340px;
 }
@@ -207,6 +209,7 @@
 .plot {
      width: 96%;
      margin: auto;
+     margin-bottom: 20px;
 }
 
 
@@ -309,5 +312,59 @@ input[type="number"]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid #FFCB9A;
     box-shadow: 0 1px 0 0 #FFCB9A;
 
+
 }
 
+input[type="number"]:not(.browser-default) {
+    font-size: 12px;
+}
+
+
+/*----------------------------------------------
+    MEDIA QUERIES
+------------------------------------------------*/
+
+
+@media(max-width:1700px) {
+    .row-cards,
+    .row-title {
+        width: 95%;
+    }
+}
+
+
+@media(max-width:992px) {
+
+
+    .card-table {
+        overflow: auto;
+    }
+
+}
+
+
+@media(max-width:520px) {
+
+
+
+    .row-title h3 {
+        font-size: 24px;
+    }
+
+    .row-title p {
+        font-size: 10px;
+    }
+
+
+
+    .card-data {
+        width: 100%;
+    }
+
+    .btn-navigation {
+        width: 80%;
+    }
+
+
+
+}

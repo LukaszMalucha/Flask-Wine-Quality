@@ -144,14 +144,6 @@ def rate():
                     })
 
 
-        # return render_template( rf_predict=rf_predict[0],
-        #                        gtb_predict=gtb_predict[0], vot_predict=vot_predict[0],
-        #                        random_forest_message=random_forest_message,
-        #                        gradient_message=gradient_message,
-        #                        vote_message=vote_message)
-
-
-
 
 @algorithms_blueprint.route('/download_code/<code_name>', methods=['GET'])
 def download_code(code_name):
@@ -159,19 +151,3 @@ def download_code(code_name):
 
     return send_file(code, as_attachment=True)
 
-
-## MANAGE DB VIEWS #####################################################################################################
-
-
-@algorithms_blueprint.route('/manage_db')
-def manage_db():
-    return render_template('manage_db.html')
-
-
-@algorithms_blueprint.route('/new_code', methods=['POST'])
-def new_code():
-    code_file = request.files['inputFile']
-    code_file = code_file.read()
-    code = CodeModel(name=request.form['name'], file=code_file)
-    code.save_to_db()
-    return redirect(url_for("algorithms.summary"))
