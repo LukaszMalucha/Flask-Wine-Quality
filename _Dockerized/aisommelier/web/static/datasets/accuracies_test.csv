@@ -1,0 +1,6 @@
+Algorithm,Test Set Accuracy Mean
+SVM (Linear),56%
+SVM (RGB),65%
+Random Forest,67%
+Gradient Tree Boost,68%
+Vote Classifier,69%

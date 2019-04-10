@@ -2,8 +2,11 @@
 
 #### [Visit App on Heroku](https://myclassifierwine.herokuapp.com/)
 
+<br>
 
+![5](https://user-images.githubusercontent.com/26208598/55909851-e41fe280-5bd4-11e9-9390-f34556a2f978.JPG)
 
+<br>
 ## PROJECT CASE
 
 Can A.I. accurately predict red wine quality rating? <br>
@@ -22,27 +25,34 @@ Flask App has 4 views, each of them representing different stage of machine lear
 ### Part 1 - Dataset Overview
 
 First, we'll have a closer look on dataset. With numpy, pandas, seaborn and scikit-learn:
+<br>
 
-![1](https://user-images.githubusercontent.com/26208598/42726492-34abc6d2-878d-11e8-8e3b-77a22d9c08de.GIF)
+![2](https://user-images.githubusercontent.com/26208598/55909858-e6823c80-5bd4-11e9-889d-dd523c410884.JPG)
+<br>
 ### Part 2 - Building Classifier 
 
 In the next step we'll build foundations of our classifier while choosing best fitting algorithms:
+<br>
 
-![2](https://user-images.githubusercontent.com/26208598/42726493-360263c4-878d-11e8-8dad-0f09f086c0e5.GIF)
+![3](https://user-images.githubusercontent.com/26208598/55909863-e7b36980-5bd4-11e9-9115-6ddb130c99b5.JPG)
 
+<br>
 ### Part 3 - Fitting Classifier
 
 Now, it's a time to test our classifiers and see how they're performing:
+<br>
 
-![1](https://user-images.githubusercontent.com/26208598/51864052-923c2000-233a-11e9-8e94-144d5a7b0d67.JPG)
+![4](https://user-images.githubusercontent.com/26208598/55909871-e97d2d00-5bd4-11e9-9313-8d63f6cee012.JPG)
 
+<br>
 ### Part 4 - Rating Red Wine
 
 Let me introduce you to our A.I. Sommeliers:
+<br>
 
-![2](https://user-images.githubusercontent.com/26208598/51864053-923c2000-233a-11e9-8882-6620eea72bb5.JPG)
+![1](https://user-images.githubusercontent.com/26208598/55909984-2e08c880-5bd5-11e9-9865-167ed4be86ea.JPG)
 
-
+<br>
 ## TOOLS, MODULES & TECHNIQUES
 
 ##### Python – web development:
@@ -70,41 +80,7 @@ HTML | CSS | Bootstrap | Materialize | JavaScript | JQuery
 
 ##### /tests
 
-
-## INSTALLING REQUIREMENTS (Conda Environment, Cloud9)
-
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh<br>
-chmod a+x Miniconda3-latest-Linux-x86_64.sh<br>
-./Miniconda3-latest-Linux-x86_64.sh<br>
-
-NEW TERMINAL
-
-conda create -n py3 python=3 ipython <br>
-source activate py3 <br>
-conda install pip <br>
-
-pip install numpy <br>
-pip install pandas <br>
-pip install matplotlib <br>
-pip install scikitlearn <br>
-pip install scipy <br>
-
-pip install flask
-
-pip freeze --local > requirements.txt
-
-
-## CREDITS & INSPIRATIONS
-
-##### Error 404 template:
-
-Robin Selmer:
-
-https://codepen.io/robinselmer/pen/vJjbOZ<br>
-
-##### Team Members Portraits:
-
-https://www.pexels.com
+<br><br>
 
 Thank you,
 
