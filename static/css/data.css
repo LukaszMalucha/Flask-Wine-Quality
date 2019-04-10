@@ -75,9 +75,17 @@
     width: 98%;
     margin: auto;
     border: 1px solid #515663;
-    min-height: 350px;
 }
 
+
+.card-plot {
+    background: #373d49;
+    border-radius: 5px;
+    width: 98%;
+    margin: auto;
+    border: 1px solid #515663;
+    min-height: 340px;
+}
 
 
 .card-data {
@@ -116,10 +124,8 @@
 ------------------------------------------------------------------------------*/
 
 .plot {
-     width: 98%;
+     width: 96%;
      margin: auto;
-
-
 }
 
 

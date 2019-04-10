@@ -82,9 +82,12 @@ a {
 .box {
    display: flex;
    align-items:center;
-   margin-bottom: 10px;
+
 }
 
+h6 {
+    color: #FFCB9A;
+}
 
 
 /*------------------------------------------------------------------------------

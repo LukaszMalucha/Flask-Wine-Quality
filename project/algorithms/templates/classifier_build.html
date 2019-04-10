@@ -5,9 +5,6 @@
 <div class="row header">
     <div id="messageAlert" class="alert alert-message" role="alert">
     </div>
-    <div id="messageError" class="alert alert-message" role="alert">
-
-    </div>
 </div>
 
 <div class="dashboard-cards">
@@ -18,258 +15,138 @@
     <div class="row row-cards">
         <div class="card card-transparent">
             <p>Classification identifies to which of a set of categories a new observation belongs. Classification
-                problem is an example of pattern recognition that predict a probability of a given example belonging to
-                each output class. The output variables are often  called labels or categories.
+                problem is an example of pattern recognition that predict a probability of a given example belonging
+                to each output class. The output variables are often called labels or categories. There are a number of
+                classification models. Most popular are - Naive Bayes, Random Forest, Logistic Regression and SVR.
             </p>
-            <p>No. of Rows: <b>{{rows}}</b></p>
-            <p>No. of Columns: <b>{{columns}}</b></p>
-            <a target="_blank" href="https://archive.ics.uci.edu/ml/datasets/wine+quality">UC Irvine Machine Learning
-                Repository - Wine Quality Data Set</a>
+            <p><b>Classification problem examples: </b> &nbsp; &nbsp; Email spam detector • Speech Recognition • DNA Sequence Classification</p>
+            <p><b>Preprocessing steps: </b> &nbsp; &nbsp; One Hot Encoding • Label Encoding • Feature
+                Standardization • Train-Test Split</p>
+            <p><b>Possible issues & pitfalls: </b> &nbsp; &nbsp; Dummy Variable Trap • Overfitting </p>
         </div>
     </div>
+    <div class="row row-title">
+        <h3>Dataset Preprocessing</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> We'll use sklearn library to reshuffle our dataset - we want to avoid
+            any particular samples order that could somehow disrupt machine learning process. Our X,y separated dataset:
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-9 plain-element">
+            <div class="card card-table">
+                {{X_head | safe}}
+            </div>
+        </div>
+        <div class="col-md-3 plain-element">
+            <div class="card card-table">
+                {{y_head | safe}}
+            </div>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>Features Standardization</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> Standardization is commonly required for machine learning tasks. It
+            helps to avoid weighting imbalances among features. We'll use StandardScaler from sklearn library:</p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-12 plain-element">
+            <div class="card card-table">
+                {{ X_transformed_df | safe }}
+            </div>
+        </div>
+    </div>
+    <div class="row row-title">
+        <div class="box">
+            <h3>Train-Test Split</h3>
+            <form action="{{url_for('algorithms.download_code', code_name='classifier_build') }}" method="GET"
+                  enctype="multipart/form-data">
+                 <button type="Download" class="btn button-inline">Download Code</button>
+            </form>
+        </div>
+        <p>&nbsp;<i class="fab fa-python"> </i> We'll use 80% of a dataset to train our machine learning model. Other
+            20% we'll use to measure it's performance. With use of sklearn.model_selection library:</p>
+    </div>
+    <div class="row row-cards">
+        <div class="card card-transparent">
+            <p>X_train records: <b>{{X_train_len}}</b></p>
+            <p>X_test records: &nbsp; <b>{{X_test_len}}</b></p>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>ML Algorithm Selection</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> We'll run a quick performance test of various classification algorithms:
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-2 plain-element">
+            <h6> Logistic Regression</h6>
+            <img src="/static/img/LR.gif" class="img-responsive plot"/>
+        </div>
+        <div class="col-md-2 plain-element">
+            <h6> SVM</h6>
+            <img src="/static/img/KSVM.gif" class="img-responsive plot"/>
+        </div>
+        <div class="col-md-2 plain-element">
+            <h6> Naive Bayes</h6>
+            <img src="/static/img/NB.gif" class="img-responsive plot"/>
+        </div>
+        <div class="col-md-2 plain-element">
+            <h6> Random Forest</h6>
+            <img src="/static/img/RFC.gif" class="img-responsive plot"/>
+        </div>
+        <div class="col-md-2 plain-element">
+            <h6> GT Boosting</h6>
+            <img src="/static/img/GTB.gif" class="img-responsive plot"/>
+        </div>
+        <div class="col-md-2 plain-element">
+            <h6>AdaBoost</h6>
+            <img src="/static/img/AB.gif" class="img-responsive plot"/>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>Algorithms Initial Performance</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> To measure initial performance, we'll fit raw models to our training set
+            (without specifying any parameters) using k-Fold Cross Validation technique:
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-12 plain-element">
+            <div class="card card-table">
+                {{ accuracies_initial | safe }}
+            </div>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>Conclusion</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> Classification algorithm choice
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="card card-transparent">
+            <p>Predicting all 6 classes it's not an easy task and we can see that Naive Bayes and AdaBoost
+                didn't handle it well. Other bottom performers were Logistic Regression and KNN. Standard
+                deviation was under 5% (except NB - 15%!). Let's keep only 4 top performance for now and try to tune
+                some hyperparameters.</p>
+        </div>
+    </div>
+<div class="row row-cards">
+              <a href="{{ url_for('algorithms.classifier_fit') }}" class="btn btn-navigation"
+               id="navigation"><span>Parameters Tuning <i class="far fa-arrow-alt-circle-right"></i></span></a>
 
+</div>
 
+<div class="row row-cards"> </div>
 </div>
 
 
 {% endblock %}
 
-
-<div class="card text-center" id="main_card">
-    <br>
-    <h1>Classification Overview</h1>
-    <br>
-    <div class="row"></div>
-    <div class="row">
-        <div class="col-md-12 text-center" id="desc_col">
-            <div class="card" id="description_card">
-                <div class="row text-center">
-                    <div class="col-md-3 text-left" id="text_card">
-                        <h2>Overview:</h2>
-                        <p>
-                        </p>
-                    </div>
-                    <div class="col-md-3 text-left" id="text_card">
-
-                        <h2>Real life example:</h2>
-                        <li>Email spam detector</li>
-                        <li>Handwritten Digit Recognition.</li>
-                        <li>Speech Recognition.</li>
-                        <li>DNA Sequence Classification.</li>
-                    </div>
-                    <div class="col-md-2 text-left" id="text_card">
-                        <h2>Preprocessing:</h2>
-
-                        <li> One Hot Encoding</li>
-                        <li> Label Encoding</li>
-                        <li> StandardScaler</li>
-                        <li> Train-Test Split</li>
-
-                    </div>
-                    <div class="col-md-2 text-left" id="text_card">
-                        <h2>Possible issues:</h2>
-                        <li> Dummy Variable Trap</li>
-                        <li> Overfitting</li>
-
-                    </div>
-                    <div class="col-md-2 text-left" id="text_card">
-                        <h2>Read more:</h2>
-                        <li><a target="_blank"
-                               href="https://machinelearningmastery.com/classification-versus-regression-in-machine-learning/">Machine
-                            Learning Mastery</a></li>
-                        <li><a target="_blank"
-                               href="https://www.geeksforgeeks.org/regression-classification-supervised-machine-learning/">GeeksforGeeks</a>
-                        </li>
-                        <li><a target="_blank" href="https://www.youtube.com/watch?v=f7YB73F0zDo">ML Introduction:
-                            Classification</a></li>
-                        <li><a target="_blank"
-                               href="https://www.datascience.com/blog/regression-and-classification-machine-learning-algorithms">Regression
-                            vs. Classification</a></li>
-                    </div>
-                </div>
-            </div>
+<div class="box">
+            <h3>Conclusion</h3>
+            <form action="{{url_for('algorithms.download_code', code_name='classifier_build') }}" method="GET"
+                  enctype="multipart/form-data">
+                 <button type="Download" class="btn button-inline">Download Code</button>
+            </form>
         </div>
-    </div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <br>
-    <h1>Dataset Preprocessing</h1>
-    <br>
-    <div class="row">
-        <div class="col-md-12 text-center" id="desc_col">
-
-            <div class="card" id="description_card">
-                <div class="row text-center">
-                    <div class="col-md-12 text-center" id="text_card">
-                        <h2>Dataset shuffle, separating labels & features</h2>
-                        <br>
-                        <br>
-                        <p>We'll use sklearn library to reshuffle our dataset - we want to avoid any particular samples
-                            order that could somehow disrupt machine learning process. Our X,y separated dataset:</p>
-                        <br>
-                        <div class="col-md-8 text-center">
-                            <h2 style="color: #800000">X (features)</h2>
-                            <br> {{X_head | safe}}
-                        </div>
-                        <div class="col-md-1 text-left"></div>
-                        <div class="col-md-2 text-center">
-                            <h2 style="color: #800000">y (label)</h2>
-                            <br> {{y_head | safe}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-        </div>
-
-        <div class="col-md-12 text-center" id="desc_col">
-            <div class="card" id="description_card">
-                <div class="row text-center">
-                    <div class="col-md-12 text-center" id="text_card">
-                        <h2>Features Standardisation</h2>
-                        <br>
-                        <br>
-                        <p>Standardization is commonly required for machine learning tasks. It helps to avoid weighting
-                            imbalances among features. We'll use StandardScaler from sklearn library:</p>
-                        <br> {{ X_transformed_df | safe }}
-                    </div>
-                </div>
-            </div>
-            <br>
-        </div>
-        <div class="col-md-12 text-center" id="desc_col">
-            <div class="card" id="description_card">
-                <div class="row text-center">
-                    <div class="col-md-12 text-center" id="text_card">
-                        <h2>Train/Test split</h2>
-                        <br>
-                        <p>We'll use 80% of a dataset to train our machine learning model. Other 20% we'll use to
-                            measure it's performance. With use of sklearn.model_selection library:</p>
-                        <br>
-                        <br>
-                        <div class="col-md-1 text-left"></div>
-                        <div class="col-md-5 text-center">
-                            <h2 style="color: #800000">X_train records:</h2>
-                            <h2>{{X_train_len}}</h2>
-                        </div>
-                        <div class="col-md-5 text-center">
-                            <h2 style="color: #800000">X_test records:</h2>
-                            <h2>{{X_test_len}}</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-        </div>
-    </div>
-    <br>
-    <h1>ML Algorithm Selection</h1>
-    <br>
-    <div class="row">
-        <div class="card" id="description_card">
-            <div class="row text-center">
-                <div class="col-md-12 text-center" id="text_card">
-                    <h2>Classification Algorithms</h2>
-                    <br>
-                    <p> We'll run a quick performance test of various classification algorithms:
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 text-center">
-            <div class="card" id="description_card">
-                <h2> Logistic Regression</h2>
-                <img src="/static/img/LR.gif" class="img-responsive"/>
-            </div>
-        </div>
-        <div class="col-md-2 text-center">
-            <div class="card" id="description_card">
-                <h2> SVM</h2>
-                <img src="/static/img/KSVM.gif" class="img-responsive"/>
-            </div>
-        </div>
-        <div class="col-md-2 text-center">
-            <div class="card" id="description_card">
-                <h2> Naive Bayes (Gaussian)</h2>
-                <img src="/static/img/NB.gif" class="img-responsive"/>
-            </div>
-        </div>
-        <div class="col-md-2 text-center">
-            <div class="card" id="description_card">
-                <h2> Random Forest</h2>
-                <img src="/static/img/RFC.gif" class="img-responsive"/>
-            </div>
-        </div>
-        <div class="col-md-2 text-center">
-            <div class="card" id="description_card">
-                <h2> Gradient Tree Boosting</h2>
-                <img src="/static/img/GTB.gif" class="img-responsive"/>
-            </div>
-        </div>
-        <div class="col-md-2 text-center">
-            <div class="card" id="description_card">
-                <h2>AdaBoost</h2>
-                <img src="/static/img/AB.gif" class="img-responsive"/>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card" id="description_card">
-            <div class="row text-center">
-                <div class="col-md-12 text-center" id="text_card">
-                    <h2>Algorithms Initial Performance</h2>
-                    <br>
-                    <br>
-                    <p>To measure initial performance, we'll fit raw models to our training set (without specifying any
-                        parameters) using k-Fold Cross Validation technique:</p>
-                    <div class="col-md-2 text-left"></div>
-                    <div class="col-md-8 text-center">
-
-                        <br> {{ accuracies_initial | safe }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card" id="description_card">
-            <div class="row text-center">
-                <div class="col-md-12 text-center" id="text_card">
-                    <h2>Conclusion</h2>
-                    <br>
-                    <p> Predicting all 6 classes it's not an easy task and we can see that Naive Bayes and AdaBoost
-                        didn't handle it well. Other bottom performers were Logistic Regression and KNN. Standard
-                        deviation was under 5% (except NB - 15%!).<br> Let's
-                        keep only 4 top performance for now and try to tune some hyperparameters.
-                    </p>
-
-                </div>
-
-                <div class="col-md-12 text-center" id="text_card">
-                    <br>
-                    <h2>Download Code for this Section</h2>
-                    <br>
-                    <form action="{{url_for('algorithms.download_code', code_name='classifier_build') }}" method="GET"
-                          enctype="multipart/form-data">
-                        <button type="Download" class="btn btn-default" id="button-download">Download</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="row text-center">
-            <a href="{{ url_for('algorithms.classifier_fit') }}" class="waves-effect waves-light btn-large"
-               id="navigation">Parameters Tuning</a>
-        </div>
-    </div>
-    <div class="row"></div>
-    <div class="row"></div>
-
-
-</div>
 
 
