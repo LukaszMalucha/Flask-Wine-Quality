@@ -32,9 +32,11 @@ model_vot = pickle.load(open(model_vot_pickled, "rb"))
 
 def dataset_characteristics():
     dataset = pd.read_csv(wine_quality)
+
     dataset_head = dataset.head(10)
     describe = dataset.describe()
     describe = describe.iloc[1:, :]
+
     rows = len(dataset.index)
     columns = len(dataset.columns)
     counter = Counter(dataset['quality'])

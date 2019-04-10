@@ -1,104 +1,77 @@
-{% extends 'base.html' %} {% block content %}
-<div class="card text-center" id="main_card">
+{% extends 'base.html' %}
 
-    <br>
-    <h1>Hyperparameters Tuning</h1>
-    <br>
-    <div class="row">
-        <div class="col-md-12 text-center" id="desc_col">
-            <div class="card" id="description_card">
-                <div class="row text-center">
-                    <div class="col-md-12 text-center" id="text_card">
-                        <h2>GridSearch</h2>
-                        <br>
-                        <br>
-                        <p>In order to choose optimal parameters for each algorithm, we'll use GridSearchCV from sklearn library. It'll allow us to perform cross-validation of every possible specified hyperparameters setup:</p>
-                        <br>
-                        <div class="col-md-2 text-left"></div>
-                        <div class="col-md-8 text-left">
-                            <li style="color:black">Optimal parameters for Linear SVM are: {'C': 1, 'kernel' : 'linear'}</li>
-                            <li style="color:black">Optimal parameters for Kernel SVM are {'C': 10, 'gamma': 1.0, 'kernel': 'rbf'}</li>
-                            <li style="color:black">Optimal parameters for RandomForest are {'criterion': 'entropy', 'min_samples_leaf': 3, max_depth': 110, 'max_features': 3, 'min_samples_split': 5, 'n_estimators': 200}</li>
-                            <li style="color:black">Optimal parameters for Gradient Tree Boosting are {'learning_rate': 0.1, max_features = 0.1, 'n_estimators': 450}</li>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row"></div>
-            <div class="card" id="description_card">
-                <div class="row text-center">
-                    <div class="col-md-12 text-center" id="text_card">
-                        <h2>Algorithms Performance after Tuning</h2>
-                        <br>
-                        <br>
-                        <p>Again, we'll measure model performance using k-Fold Cross Validation technique. Additionally we'll try out Vote Classifier built with all four other classifiers: </p>
-                        <div class="col-md-3 text-left"></div>
-                        <div class="col-md-6 text-center">
+{% block content %}
 
-                            <br> {{ accuracies_tune | safe }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
+<div class="row header">
+    <div id="messageAlert" class="alert alert-message" role="alert">
     </div>
-
-
-    <br>
-    <h1>Predicting Test Set Values</h1>
-    <br>
-    <div class="row">
-        <div class="card" id="description_card">
-            <div class="row text-center">
-                <div class="col-md-12 text-center" id="text_card">
-                    <h2>Predicting y_test</h2>
-                    <br>
-                    <p> Let's see how our models are performing on a test set:</p>
-                    <div class="col-md-4 text-left"></div>
-                    <div class="col-md-6 text-center">
-
-                        <br> {{ accuracies_test | safe }}
-                    </div>
-                    <br>
-                    <div class="col-md-12 text-center">
-                        <br>
-                        <br>
-                        <h2>Download Code for this Section</h2>
-                        <br>
-                        <form action="{{url_for('algorithms.download_code', code_name='classifier_test') }}" method="GET" enctype="multipart/form-data">
-                            <button type="Download" class="btn btn-default" id="button-download">Download</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card" id="description_card">
-            <div class="row text-center">
-                <div class="col-md-12 text-center" id="text_card">
-                    <h2>Conclusion</h2>
-                    <br>
-                    <p>With given data samples avg 70% accuracy is the highest as we can reach. There is a high probability that with more data we could predict quality with better precision. Generally, ensemble models (RF, GTB) outperform other algorithms
-                        in this task.<br> Now, let us meet our Artificial Sommeliers in person by clicking button below:</p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="row text-center">
-
-                <a href="{{ url_for('algorithms.sommeliers') }}"  class="waves-effect waves-light btn-large" id="navigation">A.I. Sommeliers</a>
-
-        </div>
-    </div>
-    <div class="row"></div>
-    <div class="row"></div>
-
-
 </div>
 
+<div class="dashboard-cards">
+    <div class="row row-title">
+        <h3>Hyperparameters Tuning</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> In order to choose optimal parameters for each algorithm, we'll use <b>GridSearchCV</b>
+            from <b>sklearn</b> library:</p>
+    </div>
+    <div class="row row-cards">
+        <div class="card card-transparent">
+            <p><b>Optimal parameters for Linear SVM: </b> {'C': 1, 'kernel' : 'linear'}</p>
+            <p><b>Optimal parameters for Kernel SVM: </b> {'C': 10, 'gamma': 1.0, 'kernel': 'rbf'}</p>
+            <p><b>Optimal parameters for RandomForest: </b> {'criterion': 'entropy', 'min_samples_leaf': 3, max_depth':
+                110, 'max_features': 3, 'min_samples_split': 5, 'n_estimators': 200}</p>
+            <p><b>Optimal parameters for Gradient Tree Boosting: </b> {'learning_rate': 0.1, max_features = 0.1,
+                'n_estimators': 450}</p>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>Algorithms Performance after Tuning</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> Again, we'll measure model performance using <b>k-Fold Cross
+            Validation</b> technique. Additionally we'll try out <b>Vote Classifier</b> built with all four other
+            classifiers: </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-12 plain-element">
+            <div class="card card-table">
+                {{ accuracies_tune | safe }}
+            </div>
+        </div>
+    </div>
+    <div class="row row-title">
+        <div class="box">
+            <h3>Predicting Test Set Values</h3>
+            <form action="{{url_for('algorithms.download_code', code_name='classifier_test') }}"
+                  method="GET" enctype="multipart/form-data">
+                <button type="Download" class="btn button-inline">Download</button>
+            </form>
+        </div>
+        <p>&nbsp;<i class="fab fa-python"> </i> Let's see how our models are performing on a test set (y_test): </p>
+    </div>
+    <div class="row row-cards">
+        <div class="col-md-12 plain-element">
+            <div class="card card-table">
+                {{ accuracies_test | safe }}
+            </div>
+        </div>
+    </div>
+    <div class="row row-title">
+        <h3>Conclusion</h3>
+        <p>&nbsp;<i class="fab fa-python"> </i> Final thoughts regarding algorithms tuning process
+        </p>
+    </div>
+    <div class="row row-cards">
+        <div class="card card-transparent">
+            <p>With given data samples avg <b>70%</b> accuracy is the highest as we can reach. There is a high probability that
+                with more data we could predict quality with better precision. Generally, ensemble models (<b>RF</b>, <b>GTB</b>)
+                outperform other algorithms in this task. Now, let us meet our <b>Artificial Sommeliers</b> in person by
+                clicking button below:</p>
+        </div>
+    </div>
+    <div class="row row-cards">
+        <a href="{{ url_for('algorithms.sommeliers') }}" class="btn btn-navigation"
+           id="navigation"><span>A.I. Sommeliers <i class="far fa-arrow-alt-circle-right"></i></span></a>
+    </div>
+
+    <div class="row row-cards"></div>
+</div>
 {% endblock %}
+
