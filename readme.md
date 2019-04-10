@@ -74,8 +74,7 @@ HTML | CSS | Bootstrap | Materialize | JavaScript | JQuery
 
 ### Travis CI:
 
-[![Build Status](https://travis-ci.com/LukaszMalucha/A.I.-Sommelier.svg?branch=master)](https://travis-ci.com/LukaszMalucha/A.I.-Sommelier)
-
+[![Build Status](https://travis-ci.com/LukaszMalucha/Flask-Wine-Quality.svg?branch=master)](https://travis-ci.com/LukaszMalucha/Flask-Wine-Quality)
 ### Test Files:
 
 ##### /tests
