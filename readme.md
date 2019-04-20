@@ -1,6 +1,6 @@
 # A.I. Sommelier
 
-#### [Visit App on Heroku](https://myclassifierwine.herokuapp.com/)
+#### [Visit App on Heroku](https://myclassifierwine1.herokuapp.com/)
 
 <br>
 
