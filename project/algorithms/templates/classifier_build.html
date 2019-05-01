@@ -138,6 +138,18 @@
 <div class="row row-cards"> </div>
 </div>
 
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large btn-menu">
+    <i class="large material-icons">more_horiz</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating tooltipped" data-position="top" data-tooltip="Dataset Summary" href="{{ url_for('algorithms.summary') }}"><i class="material-icons">insert_chart</i></a></li>
+    <li><a class="btn-floating tooltipped" data-position="top" data-tooltip="Build Classifier" href="{{ url_for('algorithms.classifier_build') }}"><i class="material-icons">build</i></a></li>
+    <li><a class="btn-floating tooltipped" data-position="top" data-tooltip="Fit Classifier" href="{{ url_for('algorithms.classifier_fit') }}"><i class="material-icons">check</i></a></li>
+    <li><a class="btn-floating tooltipped" data-position="top" data-tooltip="AI Sommeliers" href="{{ url_for('algorithms.sommeliers') }}"><i class="material-icons">local_bar</i></a></li>
+  </ul>
+</div>
+
 
 {% endblock %}
 

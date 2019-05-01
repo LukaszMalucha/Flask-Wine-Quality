@@ -15,10 +15,11 @@ $(document).ready(function() {
     $('.sidenav').sidenav();
 
 //  Floating Button
-    $('.fixed-action-btn').floatingActionButton();
+    $('.fixed-action-btn').floatingActionButton({
+        direction: 'left'
+    });
 
-
-
+    $('.tooltipped').tooltip();
 
 //  Progress Bar
 

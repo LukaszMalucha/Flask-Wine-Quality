@@ -272,6 +272,29 @@
     color: white;
 }
 
+
+.fixed-action-btn {
+   right: 360px;
+   top: 130px;
+
+}
+
+
+.btn-menu {
+    background-color: #262a33;
+}
+
+.btn-floating {
+    background-color: #262a33;
+}
+
+.btn-floating:hover,
+.btn-floating:active,
+.btn-floating:focus {
+    background: #323232;
+}
+
+
 /*------------------------------------------------------------------------------
     TABLES
 ------------------------------------------------------------------------------*/
