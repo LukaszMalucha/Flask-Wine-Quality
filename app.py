@@ -17,7 +17,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
-app.config['DEBUG'] = False
+app.config['DEBUG'] = True
 api = Api(app)
 
 Bootstrap(app)

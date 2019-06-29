@@ -358,10 +358,16 @@ input[type="number"]:not(.browser-default) {
     .row-title {
         width: 95%;
     }
+
+    .fixed-action-btn {
+       right: 90px;
+       top: 150px;
+
+    }
 }
 
 
-@media(max-width:992px) {
+@media(max-width:1025px) {
 
 
     .card-table {
@@ -376,7 +382,7 @@ input[type="number"]:not(.browser-default) {
 
 
     .row-title h3 {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .row-title p {
@@ -391,6 +397,12 @@ input[type="number"]:not(.browser-default) {
 
     .btn-navigation {
         width: 80%;
+    }
+
+    .fixed-action-btn {
+       right: 10px;
+       top: 145px;
+
     }
 
 
