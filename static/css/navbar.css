@@ -1,3 +1,4 @@
+
 /*------------------------------------------------------------------------------
     TOP NAVBAR
 ------------------------------------------------------------------------------*/
@@ -8,11 +9,10 @@
 
 
 .top-navbar .navbar-brand strong {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: normal;
     display: block;
-    color: white;
-
+    color: #1DA1F2;
 }
 
 
@@ -22,20 +22,21 @@
     width: 100%;
     z-index: 300;
     border: none;
-    height: 60px;
-    padding-left: 18%;
+    height: 42px;
+    padding-left: 17.5%;
     padding-right: 18%;
     padding-top: 0px;
     padding-bottom: 0px;
+    min-height: 42px;
 
 }
 
 .top-navbar .navbar-brand {
     margin: 0px;
     width: 100%;
-    height: 60px;
+    height: 42px;
     text-align: left;
-    padding: 6px;
+    padding-top: 6px;
     font-weight: 700;
     color: #1a2026;
     background: transparent;
@@ -46,21 +47,27 @@
 }
 
 .navbar-brand .company-logo {
-    height: 3.5rem;
+    height: 2.2rem;
 
 }
 
 .navbar-brand .material-icons, .navbar-brand .fab, .navbar-brand .fas {
     float: left;
-    font-size: 26px;
+    font-size: 18px;
     margin-right: 5px;
-    margin-top: -2px;
+    margin-top: -1px;
     height: auto;
-    color: white;
+    color: #1DA1F2;
 }
 
 .nav > li {
     height: 100%;
+
+
+}
+
+nav ul a {
+    font-size: 13px;
 }
 
 .nav > li > a {
@@ -71,19 +78,20 @@
 
 .nav-link {
     height: 100% !important;
-    padding: 20px 15px 20px 15px !important;
+    padding: 14px 12px 20px 12px !important;
 }
 
 
 .nav i, .nav i.material-icons {
     height:20px;
-    font-size: 15px;
+    font-size: 14px;
     margin-right: 5px;
 }
 
+
 .top-navbar .navbar-right {
     width: auto;
-    height: 60px;
+    height: 100%;
     margin: 0px;
     line-height: 1;
     padding: 0px;
@@ -93,7 +101,8 @@
 
 .top-navbar .navbar-right>a {
     padding: 0px;
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: 650;
 }
 
 .top-navbar .navbar-right>a>i {
@@ -102,24 +111,22 @@
     height: 60px;
 }
 
-nav ul b {
-    font-weight: bold;
-}
+
 
 .dropdown-content {
-    width: 150px !important;
-    right: -50px !important;
-    top: 60px !important;
+    width: max-content !important;
+    left:  0px !important;
+    top: 42px !important;
 
 }
 
 .dropdown-content li>a {
-    font-size: 14px;
+    font-size: 13px;
     text-decoration: none;
 }
 .dropdown-content li>a>i {
     margin-right: 12px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 
@@ -127,9 +134,6 @@ nav ul b {
     font-size: 16px;
 
 }
-
-
-
 
 .sidenav-trigger {
     height: 60px !important;
@@ -148,6 +152,7 @@ nav ul b {
    padding: 10px 0px 10px 0px;
 }
 
+
 /* Hovers and Focuses --------------------------------------------------------*/
 
 .navbar-right>a:hover,
@@ -161,6 +166,7 @@ nav ul b {
     background-color: transparent;
     outline: 0px;
 }
+
 
 
 
@@ -254,10 +260,10 @@ nav ul li:hover, nav ul li:active {
 ------------------------------------------------------------------------------*/
 
 
-@media(max-width:1600px) {
+@media(max-width:1700px) {
     .top-navbar {
-        padding-left: 2%;
-        padding-right: 1%;
+        padding-left: 6%;
+        padding-right: 8%;
     }
 
     .navbar-header {
@@ -266,16 +272,27 @@ nav ul li:hover, nav ul li:active {
 
 }
 
-@media(min-width:992px) {
+@media(max-width:1300px) {
+        .top-navbar {
+        padding-left: 6%;
+        padding-right: 8%;
+    }
+
+}
+
+@media(min-width:1025px) {
 
     .sidenav-trigger {
         display: none !important;
     }
+
+
 }
-@media(max-width:992px) {
+@media(max-width:1025px) {
     .top-navbar {
         margin: 0px;
-        padding:0px;
+        padding-left: 0%;
+        padding-right: 0%;
     }
 
     .top-navbar .navbar-brand {
@@ -284,9 +301,6 @@ nav ul li:hover, nav ul li:active {
         padding: 10px;
     }
 
-    .top-navbar .navbar-brand strong {
-        font-size: 20px;
-    }
 
     .navbar-brand i.large.material-icons {
         font-size: 40px;
@@ -302,18 +316,23 @@ nav ul li:hover, nav ul li:active {
     }
 
     .navbar-header {
-    width: 70%;
+        width: 70%;
     }
+
     nav a.sidenav-trigger {
         line-height: 1;
+        display: block;
     }
 
     nav a.sidenav-trigger i {
-    height: 60px;
-    line-height: 1;
+        height: 60px;
+        line-height: 1;
     }
 
     #trigger {
+        position: relative;
+        top: -10px;
+        left: 24px;
         margin: 10px 0px 10px 0px;
     }
 
@@ -321,6 +340,12 @@ nav ul li:hover, nav ul li:active {
 
 
 @media(max-width:415px) {
+
+    .top-navbar {
+        margin: 0px;
+        padding-left: 1%;
+        padding-right: 1%;
+    }
 
     .top-navbar .navbar-brand {
         height: 60px;
@@ -342,5 +367,3 @@ nav ul li:hover, nav ul li:active {
 
 
 }
-
-

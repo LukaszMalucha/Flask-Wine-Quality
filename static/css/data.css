@@ -274,8 +274,8 @@
 
 
 .fixed-action-btn {
-   right: 360px;
-   top: 130px;
+   right: 350px;
+   top: 150px;
 
 }
 
@@ -286,6 +286,11 @@
 
 .btn-floating {
     background-color: #262a33;
+}
+
+.fixed-action-btn.direction-left ul li, .fixed-action-btn.direction-right ul li {
+    display: inline-block;
+    margin: 0px 15px 0 0;
 }
 
 .btn-floating:hover,
