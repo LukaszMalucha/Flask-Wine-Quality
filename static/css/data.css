@@ -364,6 +364,11 @@ input[type="number"]:not(.browser-default) {
        top: 150px;
 
     }
+
+    .fixed-action-btn {
+        right: 120px;
+        top: 150px;
+    }
 }
 
 
