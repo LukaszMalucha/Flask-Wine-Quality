@@ -374,7 +374,10 @@ input[type="number"]:not(.browser-default) {
 
 @media(max-width:1025px) {
 
-
+    .fixed-action-btn {
+        right: 85px;
+        top: 150px;
+    }
     .card-table {
         overflow: auto;
     }
