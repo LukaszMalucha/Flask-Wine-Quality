@@ -18,4 +18,4 @@ sciPy
 seaborn==0.8.1
 sklearn==0.0
 SQLAlchemy==1.2.9
-Werkzeug==0.14.1
+Werkzeug==0.15.3
