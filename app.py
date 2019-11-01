@@ -1,6 +1,6 @@
 ## App Utilities
 import os
-# import env
+import env
 from db import db
 
 from flask import Flask, render_template
@@ -53,11 +53,11 @@ if __name__ == '__main__':
         def create_tables():
             db.create_all()
 
-    # app.run()
+    app.run()
 
     # # Docker
     # app.run(host='0.0.0.0')
     #
     # Heroku
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    # port = int(os.environ.get('PORT', 5000))
+    # app.run(host='0.0.0.0', port=port)
