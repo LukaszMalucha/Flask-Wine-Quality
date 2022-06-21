@@ -11,7 +11,7 @@ gunicorn==19.9.0
 Jinja2==2.10
 kiwisolver==1.0.1
 matplotlib==2.2.2
-numpy==1.14.5
+numpy==1.22.0
 pandas==0.24.1
 scikit-learn
 sciPy
